@@ -2,21 +2,26 @@ package helpers.db;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import helpers.vault.DataFromVault;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public enum Postgresql {
     INSTANCE;
+
     private final HikariConfig config = new HikariConfig();
     private final HikariDataSource ds;
+    private DataFromVault vault;
 
 
     Postgresql() {
+        vault = DataFromVault.INSTANCE;
+
         config.setDriverClassName("org.postgresql.Driver");
-        config.setJdbcUrl( "jdbc:postgresql://10.203.96.205:6432/serviceplatform_1" );
-        config.setUsername( "service_platform_1" );
-        config.setPassword( "kK3kXTSmhk6ZNVDk" );
+        config.setJdbcUrl( vault.hostDbServicePlatform );
+        config.setUsername( vault.userDbServicePlatform );
+        config.setPassword(vault.passDbServicePlatform );
         config.addDataSourceProperty( "cachePrepStmts" , "true" );
         config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
         config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );

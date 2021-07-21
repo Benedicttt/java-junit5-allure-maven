@@ -2,6 +2,8 @@ package helpers.vault;
 
 import helpers.Print;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -12,10 +14,15 @@ import static io.restassured.RestAssured.given;
 
 public enum DataFromVault {
     INSTANCE;
+
     Response approle;
     Response dataVault;
-    public String baseHost;
-    public String baseBalancer;
+
+    public final String hostDbServicePlatform;
+    public final String userDbServicePlatform;
+    public final String passDbServicePlatform;
+    public final String baseHost;
+    public final String baseBalancer;
 
     DataFromVault() {
         Print.d("Singletone");
@@ -25,6 +32,10 @@ public enum DataFromVault {
         dataVault    = vault(token);
         baseHost     = getPath(dataVault.getBody().asString(), "$.data.data.host.base");
         baseBalancer = getPath(dataVault.getBody().asString(), "$.data.data.host.balance");
+
+        hostDbServicePlatform = getPath(dataVault.getBody().asString(), "$.data.data.db.service_platform.host");
+        userDbServicePlatform = getPath(dataVault.getBody().asString(), "$.data.data.db.service_platform.username");
+        passDbServicePlatform = getPath(dataVault.getBody().asString(), "$.data.data.db.service_platform.password");
     }
 
     private Response approle() {
@@ -54,6 +65,8 @@ public enum DataFromVault {
         RequestSpecification spec = new RequestSpecBuilder()
                 .setContentType("application/x-www-form-urlencoded")
                 .setBaseUri(System.getProperty("hostVault"))
+//                .addFilter(new ResponseLoggingFilter())
+//                .addFilter(new RequestLoggingFilter())
                 .addHeaders(headers)
                 .build();
 
