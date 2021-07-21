@@ -1,9 +1,7 @@
 package api;
 
-import helpers.db.Postgresql;
 import helpers.Print;
 import helpers.Request;
-import helpers.api.SystemProperty;
 import helpers.vault.DataFromVault;
 import model.repository.ContractTypeRepository;
 import io.restassured.response.Response;
@@ -53,10 +51,8 @@ public class JUnit5Test1 {
 
     @Test
     @DisplayName("get and assert status code")
-    @SystemProperty(key = "key", value = "value")
     void test1() {
         Assertions.assertNotEquals(System.getProperty("key"), "key");
-        Assertions.assertEquals(System.getProperty("key"), "value");
     }
 
     @Test

@@ -2,7 +2,6 @@ package api;
 
 import helpers.Print;
 import helpers.Request;
-import helpers.api.SystemProperty;
 import helpers.vault.DataFromVault;
 import io.restassured.response.Response;
 import model.dto.ContractType;
@@ -55,10 +54,8 @@ public class JUnit5Test3 {
 
     @Test
     @DisplayName("get and assert status code")
-    @SystemProperty(key = "key", value = "value")
     void test1() {
         Assertions.assertNotEquals(System.getProperty("key"), "key");
-        Assertions.assertEquals(System.getProperty("key"), "value");
     }
 
     @Test

@@ -12,8 +12,7 @@ public enum Postgresql {
 
     private final HikariConfig config = new HikariConfig();
     private final HikariDataSource ds;
-    private DataFromVault vault;
-
+    private final DataFromVault vault;
 
     Postgresql() {
         vault = DataFromVault.INSTANCE;
