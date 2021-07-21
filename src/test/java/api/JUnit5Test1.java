@@ -1,13 +1,11 @@
 package api;
 
-import helpers.db.Postgresql;
 import helpers.Print;
 import helpers.Request;
-import helpers.api.SystemProperty;
-import helpers.vault.DataFromVault;
-import model.repository.ContractTypeRepository;
+import helpers.loader.vault.DataFromVault;
 import io.restassured.response.Response;
 import model.dto.ContractType;
+import model.repository.ContractTypeRepository;
 import org.junit.jupiter.api.*;
 
 import java.io.IOException;
@@ -31,8 +29,6 @@ public class JUnit5Test1 {
     @BeforeAll
     static void request() throws IOException {
         response = Request.call(getProperty("baseUrlAPI"), null);
-        System.out.println(vault.baseHost);
-        System.out.println(vault.baseBalancer);
     }
 
     @Test
@@ -53,10 +49,8 @@ public class JUnit5Test1 {
 
     @Test
     @DisplayName("get and assert status code")
-    @SystemProperty(key = "key", value = "value")
     void test1() {
         Assertions.assertNotEquals(System.getProperty("key"), "key");
-        Assertions.assertEquals(System.getProperty("key"), "value");
     }
 
     @Test
