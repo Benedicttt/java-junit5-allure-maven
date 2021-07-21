@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/booking"
+  },
+  "definitions": {
+    "booking": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bookingid": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "bookingid"
+      ]
+    }
+  }
+}
