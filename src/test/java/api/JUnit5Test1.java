@@ -3,9 +3,9 @@ package api;
 import helpers.Print;
 import helpers.Request;
 import helpers.vault.DataFromVault;
-import model.repository.ContractTypeRepository;
 import io.restassured.response.Response;
 import model.dto.ContractType;
+import model.repository.ContractTypeRepository;
 import org.junit.jupiter.api.*;
 
 import java.io.IOException;
@@ -29,8 +29,6 @@ public class JUnit5Test1 {
     @BeforeAll
     static void request() throws IOException {
         response = Request.call(getProperty("baseUrlAPI"), null);
-        System.out.println(vault.baseHost);
-        System.out.println(vault.baseBalancer);
     }
 
     @Test

@@ -12,15 +12,15 @@ public enum Postgresql {
 
     private final HikariConfig config = new HikariConfig();
     private final HikariDataSource ds;
-    private final DataFromVault vault;
+    private final DataFromVault data;
 
     Postgresql() {
-        vault = DataFromVault.INSTANCE;
+        data = DataFromVault.INSTANCE;
 
         config.setDriverClassName("org.postgresql.Driver");
-        config.setJdbcUrl( vault.hostDbServicePlatform );
-        config.setUsername( vault.userDbServicePlatform );
-        config.setPassword(vault.passDbServicePlatform );
+        config.setJdbcUrl( data.vault.db.services_platform.host );
+        config.setUsername( data.vault.db.services_platform.username );
+        config.setPassword( data.vault.db.services_platform.password );
         config.addDataSourceProperty( "cachePrepStmts" , "true" );
         config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
         config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
