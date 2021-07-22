@@ -2,7 +2,7 @@ package api;
 
 import helpers.Print;
 import helpers.Request;
-import helpers.vault.DataFromVault;
+import helpers.loader.vault.DataFromVault;
 import io.restassured.response.Response;
 import model.dto.ContractType;
 import model.repository.ContractTypeRepository;

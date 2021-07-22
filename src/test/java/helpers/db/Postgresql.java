@@ -2,7 +2,7 @@ package helpers.db;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import helpers.vault.DataFromVault;
+import helpers.loader.vault.DataFromVault;
 
 import java.sql.Connection;
 import java.sql.SQLException;

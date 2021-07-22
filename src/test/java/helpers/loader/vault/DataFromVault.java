@@ -1,6 +1,7 @@
-package helpers.vault;
+package helpers.loader.vault;
 
 import com.google.gson.Gson;
+import helpers.loader.approle.ApproleProperties;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;

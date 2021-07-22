@@ -1,4 +1,4 @@
-package helpers.vault;
+package helpers.loader.vault;
 
 import lombok.RequiredArgsConstructor;
 
